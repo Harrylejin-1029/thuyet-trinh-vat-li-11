@@ -1,5 +1,5 @@
 /**
- * Full 24-Slide Academic Presentation Data
+ * Full 26-Slide Academic Presentation Data
  * Physics 11 - Chapter II - Lesson 5: Analog & Digital Signals
  * Integrating Interactive 3D & 2D Simulation Mounts + Full Speaker Notes
  */
@@ -258,6 +258,10 @@ Trên mô phỏng 3D bên phải, khi véc-tơ quay tròn một vòng hoàn ch�
                     <p style="color:#AAB7C8; margin-top:8px;">
                         <b>Phân tích vật lí:</b> Áp suất sóng âm làm rung màng micro, kéo cuộn dây chuyển động trong từ trường sinh ra suất điện động cảm ứng biến thiên liên tục đồng dạng 1:1 với âm thanh gốc.
                     </p>
+                    <div class="slide-img-card" style="margin-top:8px;">
+                        <img src="assets/sound_mixer_studio.jpg" alt="Phòng thu & Micro âm thanh analog" style="max-height:85px; object-fit:cover;">
+                        <div class="slide-img-caption">🎙️ Màng micro biến dao động âm thanh thành điện áp tương tự liên tục</div>
+                    </div>
                 </div>
             </div>
         `,
@@ -287,6 +291,10 @@ Thứ ba, hoạt động của micro: sóng âm thanh đập vào màng rung c�
                         <li><b>Hữu hạn các mức điện áp:</b> Chỉ nhận một số lượng hữu hạn (đếm được) các giá trị/mức điện áp xác định trước.</li>
                         <li><b>Bước nhảy đột ngột:</b> Đồ thị cho thấy tín hiệu nhảy vọt tức thời từ giá trị điện áp này sang giá trị điện áp khác tạo nên hình dạng xung vuông.</li>
                     </ul>
+                    <div class="slide-img-card" style="margin-top:10px;">
+                        <img src="assets/digital_circuit_chip.jpg" alt="Vi mạch xử lý tín hiệu số" style="max-height:85px; object-fit:cover;">
+                        <div class="slide-img-caption">💾 Vi mạch logic số xử lý hàng tỉ xung nhị phân 0 và 1 mỗi giây</div>
+                    </div>
                 </div>
                 <div class="card card-blue center-v" style="text-align:center;">
                     <h3 class="card-title blue" style="justify-content:center;">HÌNH DẠNG XUNG VUÔNG RỜI RẠC (HÌNH 5.2 SGK)</h3>
@@ -658,8 +666,12 @@ Khi tôi kéo thanh trượt "Mức nhiễu" lên 40% hoặc tăng "Số lần s
                         <span style="color:#FF6B6B;">- Nhược điểm:</span> <b>Chiếm nhiều băng thông hơn</b> (xung vuông chứa nhiều sóng hài tần số cao).<br>
                         <span style="color:#2ED573;">+ Ưu điểm:</span> Ít nhiễu, sửa lỗi tốt, bảo mật cao.
                     </div>
-                    <div class="info-callout" style="border-color:#AAB7C8; margin-top:auto;">
-                        ⚖️ <b>Nhận xét khách quan:</b> Không có phương thức nào hoàn hảo tuyệt đối; tùy bài toán băng thông hay chất lượng mà kỹ thuật chọn phương án phù hợp (hoặc kết hợp cả hai).
+                    <div class="slide-img-card" style="margin-top:8px;">
+                        <img src="assets/fiber_optic.jpg" alt="Mạng cáp quang viễn thông số" style="max-height:80px; object-fit:cover;">
+                        <div class="slide-img-caption">💡 Cáp quang truyền xung ánh sáng số tốc độ cao giải quyết bài toán băng thông</div>
+                    </div>
+                    <div class="info-callout" style="border-color:#AAB7C8; margin-top:8px;">
+                        ⚖️ <b>Nhận xét khách quan:</b> Không có phương thức nào hoàn hảo tuyệt đối; tùy bài toán băng thông hay chất lượng mà kỹ thuật chọn phương án phù hợp.
                     </div>
                 </div>
                 <div class="card card-blue">
@@ -745,12 +757,16 @@ Sau khi xử lí hoặc truyền tới nơi nhận, để chiếc loa có thể 
                     <h3 class="card-title cyan">NGUYÊN LÍ BỘ CHUYỂN ĐỔI ADC</h3>
                     <p><b>ADC (Analog-to-Digital Converter):</b> Thiết bị chuyển đổi tín hiệu điện áp tương tự liên tục thành tín hiệu số rời rạc.</p>
                     <p style="margin-top:8px;"><b>Vị trí:</b> Đặt ngay sau tầng khuếch đại micro, trước giai đoạn xử lí tín hiệu số.</p>
-                    <h4 class="blue" style="margin-top:12px; margin-bottom:6px;">Kỹ thuật PCM (Pulse-Code Modulation):</h4>
-                    <ul class="bullet-list" style="font-size:0.88rem;">
+                    <h4 class="blue" style="margin-top:10px; margin-bottom:6px;">Kỹ thuật PCM (Pulse-Code Modulation):</h4>
+                    <ul class="bullet-list" style="font-size:0.86rem;">
                         <li><b>Bước 1 – Lấy mẫu (Sampling):</b> Đo giá trị điện áp tương tự tại các thời điểm rời rạc cách đều nhau.</li>
-                        <li><b>Bước 2 – Lượng tử hóa (Quantization):</b> Làm tròn giá trị mẫu về các mặt phẳng mức điện áp chuẩn gần nhất.</li>
+                        <li><b>Bước 2 – Lượng tử hóa (Quantization):</b> Làm tròn giá trị mẫu về các mức điện áp chuẩn gần nhất.</li>
                         <li><b>Bước 3 – Mã hóa (Coding):</b> Gán mỗi mức điện áp thành một chuỗi bit nhị phân (ví dụ 3-bit: <code>000</code> đến <code>111</code>).</li>
                     </ul>
+                    <div class="slide-img-card" style="margin-top:8px;">
+                        <img src="assets/diag_adc_3step_hd.png" alt="Sơ đồ 3 bước chuyển đổi ADC PCM" style="max-height:105px; object-fit:contain; background:#080E1C;">
+                        <div class="slide-img-caption">📊 3 bước số hóa PCM: Lấy mẫu → Lượng tử hóa → Mã hóa nhị phân</div>
+                    </div>
                 </div>
                 <div class="sim-box">
                     <div class="sim-topbar">
@@ -969,10 +985,128 @@ Chúng ta có thể nhìn thấy toàn cảnh 3D trực quan chia làm hai phía
     },
 
     // =========================================================================
-    // SLIDE 23: ỨNG DỤNG THỰC TẾ VÀ KẾT LUẬN
+    // SLIDE 23: CÂU HỎI CỦNG CỐ BÀI 5 (PHẦN 1 - CÂU 1, 2, 3)
     // =========================================================================
     {
         num: 23,
+        tag: "CỦNG CỐ KIẾN THỨC • CÂU HỎI TRẮC NGHIỆM",
+        title: "Câu Hỏi Ôn Tập Củng Cố Bài 5 (Phần 1)",
+        subtitle: "Thử thách trắc nghiệm: Bản chất tín hiệu, Chu kì T = 1/f & Tín hiệu số đa mức",
+        content_html: `
+            <div class="quiz-container">
+                <!-- Câu 1 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-cyan">CÂU 1</span>
+                        <span>Điểm khác biệt cốt lõi nhất về mặt bản chất giữa tín hiệu tương tự (analog) và tín hiệu số (digital) là gì?</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai5-q1-exp')">A. Tín hiệu tương tự biến thiên liên tục theo thời gian và có vô số mức giá trị; tín hiệu số rời rạc theo thời gian và chỉ nhận hữu hạn các mức điện áp</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q1-exp')">B. Tín hiệu tương tự chỉ truyền được trong dây đồng; tín hiệu số chỉ truyền trong cáp quang</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q1-exp')">C. Tín hiệu tương tự luôn có chu kì xác định; tín hiệu số không bao giờ có chu kì</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q1-exp')">D. Tín hiệu tương tự không bao giờ bị nhiễu; tín hiệu số luôn bị suy hao chất lượng</button>
+                    </div>
+                    <div id="bai5-q1-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Định nghĩa SGK trang 33-34: Tín hiệu tương tự biến thiên liên tục theo thời gian và có vô số giá trị biên độ. Tín hiệu số rời rạc theo thời gian và chỉ nhận một số hữu hạn các mức giá trị xác định (thường là 2 mức 0 và 1).
+                    </div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-cyan">CÂU 2</span>
+                        <span>Dòng điện xoay chiều sinh hoạt tại Việt Nam có tần số $f = 50\\text{ Hz}$. Chu kì dao động của tín hiệu này là:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q2-exp')">A. $T = 0,5\\text{ s} = 500\\text{ ms}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai5-q2-exp')">B. $T = 0,02\\text{ s} = 20\\text{ ms}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q2-exp')">C. $T = 0,05\\text{ s} = 50\\text{ ms}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q2-exp')">D. $T = 0,2\\text{ s} = 200\\text{ ms}$</button>
+                    </div>
+                    <div id="bai5-q2-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Theo công thức SGK trang 33: $T = \\frac{1}{f} = \\frac{1}{50\\text{ Hz}} = 0,02\\text{ s} = 20\\text{ ms}$. Mỗi dao động toàn phần của điện xoay chiều diễn ra trong đúng 20 mili giây.
+                    </div>
+                </div>
+
+                <!-- Câu 3 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-cyan">CÂU 3</span>
+                        <span>Một tín hiệu số có 4 mức điện áp được dùng để truyền dữ liệu. Biết mỗi mức điện áp mã hóa được 2 bit ($00, 01, 10, 11$). Nếu mỗi giây gửi đi được 8 mức tín hiệu thì tốc độ bit là:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q3-exp')">A. $4\\text{ bit/s}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q3-exp')">B. $8\\text{ bit/s}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai5-q3-exp')">C. $16\\text{ bit/s}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q3-exp')">D. $32\\text{ bit/s}$</button>
+                    </div>
+                    <div id="bai5-q3-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Dựa trên Hình 5.3 SGK trang 34: Mỗi mức tín hiệu biểu diễn nhóm 2 bit. Với tốc độ 8 mức/giây, tổng số bit truyền được trong 1 giây là $8 \\times 2 = 16\\text{ bit/s}$ (gấp đôi so với hệ thống 2 mức).
+                    </div>
+                </div>
+            </div>
+        `,
+        notes: `Kính mời thầy cô và các bạn cùng ôn lại các kiến thức trọng tâm của Bài 5:
+Câu 1 nhấn mạnh sự phân biệt cơ bản giữa liên tục vô số giá trị (tương tự) và rời rạc hữu hạn mức (số).
+Câu 2 củng cố công thức chu kì T = 1/f với ví dụ dòng điện xoay chiều 50 Hz.
+Câu 3 minh họa ưu thế của việc dùng tín hiệu số 4 mức: mỗi mức mang 2 bit giúp nhân đôi tốc độ truyền dữ liệu.`
+    },
+
+    // =========================================================================
+    // SLIDE 24: CÂU HỎI CỦNG CỐ BÀI 5 (PHẦN 2 - CÂU 4, 5)
+    // =========================================================================
+    {
+        num: 24,
+        tag: "CỦNG CỐ KIẾN THỨC • CÂU HỎI TRẮC NGHIỆM",
+        title: "Câu Hỏi Ôn Tập Củng Cố Bài 5 (Phần 2)",
+        subtitle: "Thử thách trắc nghiệm: Cặp chuyển đổi ADC / DAC & Khả năng tái tạo tín hiệu số",
+        content_html: `
+            <div class="quiz-container">
+                <!-- Câu 4 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-green">CÂU 4</span>
+                        <span>Trong các thiết bị điện thoại thông minh, vai trò chính xác của cặp bộ chuyển đổi ADC và DAC là:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q4-exp')">A. ADC biến đổi tín hiệu số thành sóng radio; DAC biến đổi sóng radio thành điện áp</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai5-q4-exp')">B. ADC biến đổi giọng nói analog từ mic thành chuỗi bit số; DAC biến đổi chuỗi bit số nhận được thành tín hiệu analog cấp cho loa/tai nghe</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q4-exp')">C. ADC điều khiển dung lượng pin; DAC bảo vệ điện thoại khỏi sét đánh</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q4-exp')">D. ADC đặt ở máy thu; DAC đặt ở máy phát</button>
+                    </div>
+                    <div id="bai5-q4-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Theo SGK trang 36-37: ADC (Analog-to-Digital Converter) số hóa sóng âm tương tự từ micro thành chuỗi số nhị phân để chip xử lý. Ở nơi nhận, DAC (Digital-to-Analog Converter) giải mã chuỗi số thành điện áp tương tự biến thiên để làm rung màng loa/tai nghe.
+                    </div>
+                </div>
+
+                <!-- Câu 5 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-green">CÂU 5</span>
+                        <span>Vì sao khi truyền tín hiệu số đi xa qua hàng chục trạm lặp (repeater), chất lượng dữ liệu ở đầu thu vẫn được bảo toàn nguyên vẹn gần như 100%?</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q5-exp')">A. Vì dây cáp truyền tín hiệu số không bao giờ có điện trở tiêu hao</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai5-q5-exp')">B. Vì trạm lặp số không khuếch đại cả sóng lẫn nhiễu như analog, mà tái tạo lại các xung vuông mới tinh nguyên bản (Regeneration), triệt tiêu hoàn toàn nhiễu tích lũy</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q5-exp')">C. Vì tín hiệu số có công suất năng lượng vô hạn</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai5-q5-exp')">D. Vì tín hiệu số không bao giờ bị tác động bởi môi trường bên ngoài</button>
+                    </div>
+                    <div id="bai5-q5-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> SGK trang 35: Đối với tín hiệu tương tự, bộ khuếch đại làm tăng cả tín hiệu lẫn tạp âm khiến nhiễu tích lũy dần. Đối với tín hiệu số, trạm lặp chỉ cần nhận diện mức 0 hay 1 rồi phát lại một xung vuông mới tinh hoàn hảo, loại bỏ sạch 100% tạp âm tích tụ!
+                    </div>
+                </div>
+            </div>
+        `,
+        notes: `Hai câu hỏi cuối cùng của Bài 5:
+Câu 4 khắc sâu vai trò của cặp chuyển đổi ADC và DAC – chiếc chìa khóa kết nối giữa thế giới âm thanh tự nhiên của con người và thế giới nhị phân của thiết bị điện tử.
+Câu 5 giải thích cơ chế tái tạo xung (Regeneration) – nguyên nhân cốt lõi giúp tín hiệu số có thể đi vòng quanh thế giới qua cáp quang biển mà không bị suy giảm chất lượng âm thanh hay hình ảnh.`
+    },
+
+    // =========================================================================
+    // SLIDE 25: ỨNG DỤNG THỰC TẾ VÀ KẾT LUẬN
+    // =========================================================================
+    {
+        num: 25,
         tag: "LIÊN HỆ THỰC TIỄN & KẾT LUẬN",
         title: "Ứng dụng công nghệ thực tế và kết luận",
         content_html: `
@@ -1001,10 +1135,10 @@ Kết luận lại: sự kết hợp hài hòa giữa thế giới tương tự 
     },
 
     // =========================================================================
-    // SLIDE 24: TÀI LIỆU THAM KHẢO
+    // SLIDE 26: TÀI LIỆU THAM KHẢO
     // =========================================================================
     {
-        num: 24,
+        num: 26,
         tag: "TÀI LIỆU THAM KHẢO & LỜI CẢM ƠN",
         title: "Tài liệu tham khảo",
         content_html: `

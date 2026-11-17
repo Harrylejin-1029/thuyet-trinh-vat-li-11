@@ -129,8 +129,8 @@
         const titleEl = document.getElementById('overview-modal-title');
         if (titleEl) {
             titleEl.textContent = currentLesson === 'bai4'
-                ? 'MỤC LỤC 22 SLIDE — BÀI 4: BIẾN ĐIỆU (AM & FM)'
-                : 'MỤC LỤC 24 SLIDE — BÀI 5: TÍN HIỆU TƯƠNG TỰ VÀ TÍN HIỆU SỐ';
+                ? `MỤC LỤC ${slides.length} SLIDE — BÀI 4: BIẾN ĐIỆU (AM & FM)`
+                : `MỤC LỤC ${slides.length} SLIDE — BÀI 5: TÍN HIỆU TƯƠNG TỰ VÀ TÍN HIỆU SỐ`;
             titleEl.style.color = currentLesson === 'bai4' ? 'var(--amber)' : 'var(--cyan)';
         }
 
@@ -319,6 +319,48 @@
     window.zoomIn = function () { applyZoom(currentZoom + 0.1); };
     window.zoomOut = function () { applyZoom(currentZoom - 0.1); };
     window.resetZoom = function () { applyZoom(1.0); };
+
+    // Interactive Quiz Checker
+    window.checkQuiz = function (btn, isCorrect, expId) {
+        const parent = btn.closest('.quiz-options');
+        if (!parent) return;
+        const allBtns = parent.querySelectorAll('.quiz-opt');
+        allBtns.forEach((b) => b.classList.remove('quiz-correct', 'quiz-wrong'));
+        const expEl = document.getElementById(expId);
+
+        if (expEl && !expEl.dataset.originalHtml) {
+            expEl.dataset.originalHtml = expEl.innerHTML;
+        }
+
+        if (isCorrect) {
+            btn.classList.add('quiz-correct');
+            if (expEl) {
+                expEl.style.display = 'block';
+                expEl.className = 'quiz-exp exp-correct';
+                expEl.innerHTML = expEl.dataset.originalHtml || expEl.innerHTML;
+                if (window.renderMathInElement) {
+                    try {
+                        renderMathInElement(expEl, {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ],
+                            throwOnError: false
+                        });
+                    } catch (e) {
+                        console.warn("Quiz KaTeX render error:", e);
+                    }
+                }
+            }
+        } else {
+            btn.classList.add('quiz-wrong');
+            if (expEl) {
+                expEl.style.display = 'block';
+                expEl.className = 'quiz-exp exp-wrong';
+                expEl.innerHTML = '❌ <strong>Chưa chính xác!</strong> Hãy suy nghĩ thêm và chọn lại đáp án đúng nhé.';
+            }
+        }
+    };
 
     // Recording Aliases
     window.startVideoRecording = function () { window.PresentationRecorder?.startVideoRecording(); };

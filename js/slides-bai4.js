@@ -1,5 +1,5 @@
 /**
- * Dữ liệu 22 Slide thuyết trình chuyên sâu: Bài 4: Biến điệu (Modulation)
+ * Dữ liệu 24 Slide thuyết trình chuyên sâu: Bài 4: Biến điệu (Modulation)
  * Vật lí 11 — Chuyên đề II: Truyền thông tin bằng sóng vô tuyến
  * Bộ sách Kết nối tri thức với cuộc sống (Trang 27 – 33)
  * Phong cách: Telecom Vintage & Modern (Deep Slate, Amber & Electric Blue)
@@ -55,6 +55,10 @@ Bài thuyết trình hôm nay sẽ giải mã toàn bộ bản chất vật lí,
                         </li>
                         <li><strong>Năng lượng yếu:</strong> Sóng điện từ tần số thấp có năng lượng phát xạ rất nhỏ ($W \\propto f^4$), nhanh chóng bị suy giảm và triệt tiêu trong khí quyển.</li>
                     </ul>
+                    <div class="slide-img-card" style="margin-top:10px;">
+                        <img src="assets/sound_mixer_studio.jpg" alt="Phòng thu âm & Micro" style="max-height:100px; object-fit:cover;">
+                        <div class="slide-img-caption">🎙️ Tín hiệu âm thanh từ micro chỉ có dải tần 20 Hz – 20 kHz</div>
+                    </div>
                 </div>
                 <div class="card card-modern">
                     <div class="card-badge badge-blue">NGHỊCH LÝ KÍCH THƯỚC ANTEN</div>
@@ -66,7 +70,7 @@ Bài thuyết trình hôm nay sẽ giải mã toàn bộ bản chất vật lí,
                         <li>Không thể chế tạo cột anten cao hàng chục kilômét trong thực tế.</li>
                         <li><strong>Giao thoa chồng lấn:</strong> Nếu ai cũng phát trực tiếp sóng âm thanh ra không gian, tất cả tín hiệu sẽ hòa lẫn vào nhau tạo thành mớ âm thanh hỗn tạp không thể tách rời.</li>
                     </ul>
-                    <div class="alert-box" style="margin-top:16px;">
+                    <div class="alert-box" style="margin-top:14px;">
                         💡 <strong>Câu hỏi cốt lõi:</strong> Làm cách nào để đóng gói âm thanh tần số thấp này vào một phương tiện truyền dẫn tần số cao để truyền đi xa?
                     </div>
                 </div>
@@ -150,12 +154,16 @@ Khi tới nơi, máy thu chỉ việc tách bức thư ra khỏi máy bay. Đó 
                 </div>
                 <div class="card" style="display:flex; flex-direction:column; justify-content:center; background:rgba(0,0,0,0.35);">
                     <div class="card-badge badge-blue">ĐẶC ĐIỂM HÌNH HỌC CỦA SÓNG AM</div>
-                    <div style="margin-top:12px; font-size:0.95rem; line-height:1.6; color:#CBD5E1;">
+                    <div style="margin-top:10px; font-size:0.92rem; line-height:1.5; color:#CBD5E1;">
                         <p>🔹 <strong>Đường bao (Envelope):</strong> Đường nối liền các đỉnh dao động của sóng mang sau điều chế có hình dạng trùng khớp hoàn toàn với đường cong dao động của sóng âm tần ban đầu.</p>
-                        <p style="margin-top:10px;">🔹 <strong>Hệ số điều chế ($m$):</strong>
+                        <p style="margin-top:6px;">🔹 <strong>Hệ số điều chế ($m$):</strong>
                             $$m = \\frac{A_m}{A_c} = \\frac{A_{\\max} - A_{\\min}}{A_{\\max} + A_{\\min}}$$
-                            Để không bị méo tín hiệu ở đầu thu, kĩ thuật đòi hỏi $0 < m \\le 1$. Nếu $m > 1$, sóng bị hiện tượng <em>quá biến điệu</em> làm gãy sóng âm thanh.
+                            Để không bị méo tín hiệu ở đầu thu, kĩ thuật đòi hỏi $0 < m \\le 1$. Nếu $m > 1$, sóng bị <em>quá biến điệu</em> làm gãy tín hiệu.
                         </p>
+                    </div>
+                    <div class="slide-img-card" style="margin-top:8px;">
+                        <img src="assets/vintage_radio.jpg" alt="Máy thu thanh AM cổ điển" style="max-height:95px; object-fit:cover;">
+                        <div class="slide-img-caption">📻 Chiếc máy thu thanh AM đầu thế kỷ 20 thu dải sóng trung MF (530 - 1700 kHz)</div>
                     </div>
                 </div>
             </div>
@@ -556,48 +564,49 @@ Trả lời câu hỏi thảo luận: nếu khoảng cách là 0,2 MHz thì có 
         title: "Bảng So Sánh Toàn Diện Biến Điệu AM và FM",
         subtitle: "Tổng hợp 6 tiêu chí cốt lõi chuẩn kiến thức SGK Vật lí 11 Trang 30",
         content_html: `
-            <div style="flex:1; overflow-x:auto;">
-                <table class="academic-table" style="font-size:0.88rem; width:100%;">
-                    <thead>
-                        <tr>
-                            <th style="width:18%;">Tiêu chí so sánh</th>
-                            <th style="width:41%; color:var(--amber);">📻 BIẾN ĐIỆU BIÊN ĐỘ (AM)</th>
-                            <th style="width:41%; color:var(--cyan);">📡 BIẾN ĐIỆU TẦN SỐ (FM)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1. Cách mang thông tin</strong></td>
-                            <td>Biên độ sóng mang thay đổi; tần số và pha giữ nguyên</td>
-                            <td>Tần số sóng mang thay đổi; biên độ đỉnh và pha giữ nguyên</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Dải tần sử dụng</strong></td>
-                            <td>Sóng trung & sóng ngắn: <strong>526,5 – 1606,5 kHz</strong></td>
-                            <td>Sóng rất cao (VHF): <strong>87,5 – 108 MHz</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>3. Băng thông / Độ rộng kênh</strong></td>
-                            <td>Hẹp: <strong>$9\\text{ kHz}$ hoặc $10\\text{ kHz}$</strong> ($B_{AM} = 2f_m$)</td>
-                            <td>Rộng: <strong>$100\\text{ kHz}$ đến $200\\text{ kHz}$</strong> ($B_{FM} = 2(1+b)B$)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>4. Chất lượng âm thanh</strong></td>
-                            <td>Trung bình / Mono (dải âm thanh hẹp $\\le 5\\text{ kHz}$)</td>
-                            <td>Rất cao / Hi-Fi Stereo (dải âm rộng tới $15\\text{ kHz}$)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>5. Khả năng chống nhiễu</strong></td>
-                            <td>Kém: Rất dễ bị biến dạng do sấm sét, tia lửa điện động cơ</td>
-                            <td>Xuất sắc: Hầu như miễn nhiễm hoàn toàn với nhiễu biên độ</td>
-                        </tr>
-                        <tr>
-                            <td><strong>6. Phạm vi phát sóng</strong></td>
-                            <td>Rất xa: <strong>Hàng ngàn km</strong> (phản xạ tầng điện li)</td>
-                            <td>Ngắn: <strong>Vài chục đến trăm km</strong> (tầm nhìn thẳng Line-of-Sight)</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+                <div style="overflow-x:auto;">
+                    <table class="academic-table" style="font-size:0.84rem; width:100%;">
+                        <thead>
+                            <tr>
+                                <th style="width:18%;">Tiêu chí so sánh</th>
+                                <th style="width:41%; color:var(--amber);">📻 BIẾN ĐIỆU BIÊN ĐỘ (AM)</th>
+                                <th style="width:41%; color:var(--cyan);">📡 BIẾN ĐIỆU TẦN SỐ (FM)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Cách mang thông tin</strong></td>
+                                <td>Biên độ sóng mang thay đổi; tần số và pha giữ nguyên</td>
+                                <td>Tần số sóng mang thay đổi; biên độ đỉnh và pha giữ nguyên</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Dải tần sử dụng</strong></td>
+                                <td>Sóng trung & sóng ngắn: <strong>526,5 – 1606,5 kHz</strong></td>
+                                <td>Sóng rất cao (VHF): <strong>87,5 – 108 MHz</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Băng thông / Kênh</strong></td>
+                                <td>Hẹp: <strong>$9\\text{ kHz}$ hoặc $10\\text{ kHz}$</strong> ($B_{AM} = 2f_m$)</td>
+                                <td>Rộng: <strong>$100\\text{ kHz}$ đến $200\\text{ kHz}$</strong> ($B_{FM} = 2(1+b)B$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Khả năng chống nhiễu</strong></td>
+                                <td>Kém: Dễ méo dạng do sấm sét, tia lửa động cơ</td>
+                                <td>Xuất sắc: Mạch Limiter xén sạch nhiễu biên độ</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Phạm vi phát sóng</strong></td>
+                                <td>Rất xa: <strong>Hàng ngàn km</strong> (phản xạ tầng điện ly)</td>
+                                <td>Ngắn: <strong>40 – 100 km</strong> (tầm nhìn thẳng Line-of-Sight)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="slide-img-card" style="margin-top:2px;">
+                    <img src="assets/diag_am_fm_waveforms_hd.png" alt="So sánh trực quan dạng sóng AM và FM" style="max-height:125px; object-fit:contain; background:#080E1C;">
+                    <div class="slide-img-caption">📊 Đồ thị chuẩn: Sóng âm tần $s(t)$, Sóng mang $c(t)$, Sóng AM (biên độ nhấp nhô) và Sóng FM (tần số co giãn dày - thưa)</div>
+                </div>
             </div>
         `,
         notes: `Slide 14 là bảng tổng hợp quan trọng nhất trong toàn bộ bài học, đúc kết 6 tiêu chí theo đúng câu hỏi thảo luận trang 30 SGK.
@@ -656,24 +665,12 @@ Các xung gai điện áp lập tức cộng dồn vào biên độ sóng.
                         <li><strong>Đặc tính ngày và đêm:</strong> Ban đêm không có Mặt Trời, tầng D biến mất $\\to$ sóng phản xạ ở tầng F cao hơn $\\to$ ban đêm nghe đài AM rõ và xa hơn ban ngày!</li>
                     </ul>
                 </div>
-                <div class="card" style="text-align:center; background:rgba(0,0,0,0.4); padding:16px;">
-                    <div style="font-weight:700; color:var(--amber); font-size:0.95rem; margin-bottom:8px;">SƠ ĐỒ PHẢN XẠ ZICH-ZẮC (HÌNH 4.10 SGK)</div>
-                    <svg viewBox="0 0 320 220" style="width:100%; max-height:200px;">
-                        <!-- Trái Đất cong -->
-                        <path d="M 10 210 Q 160 160 310 210" fill="none" stroke="#22C55E" stroke-width="4"/>
-                        <text x="160" y="200" fill="#22C55E" font-size="11" text-anchor="middle" font-weight="bold">Bề mặt Trái Đất</text>
-                        <!-- Tầng điện ly -->
-                        <path d="M 10 70 Q 160 20 310 70" fill="none" stroke="#F59E0B" stroke-dasharray="6,4" stroke-width="3"/>
-                        <text x="160" y="40" fill="#F59E0B" font-size="11" text-anchor="middle" font-weight="bold">Tầng điện ly (Ionosphere)</text>
-                        <!-- Tháp phát AM -->
-                        <line x1="60" y1="185" x2="60" y2="165" stroke="#FFF" stroke-width="2"/>
-                        <text x="60" y="160" fill="#FFF" font-size="9" text-anchor="middle">Đài phát</text>
-                        <!-- Tia sóng phản xạ -->
-                        <path d="M 60 165 L 110 52 L 180 178 L 240 48 L 290 195" fill="none" stroke="#FFB703" stroke-width="2.5" marker-end="url(#arrow)"/>
-                        <!-- Máy thu -->
-                        <circle cx="290" cy="195" r="4" fill="#00E5FF"/>
-                        <text x="290" y="215" fill="#00E5FF" font-size="9" text-anchor="middle">Máy thu</text>
-                    </svg>
+                <div class="card" style="text-align:center; background:rgba(0,0,0,0.4); padding:12px;">
+                    <div style="font-weight:700; color:var(--amber); font-size:0.95rem; margin-bottom:8px;">SƠ ĐỒ PHẢN XẠ QUA CÁC TẦNG ĐIỆN LY (HÌNH 4.10 SGK)</div>
+                    <div class="slide-img-card">
+                        <img src="assets/diag_ionosphere_propagation_hd.png" alt="Phản xạ tầng điện ly AM vs FM" style="max-height:220px; object-fit:contain; background:#080E1C;">
+                        <div class="slide-img-caption">🌐 Ban đêm tầng D biến mất, sóng trung AM phản xạ cực mạnh tại tầng F; Sóng FM đâm xuyên ra vũ trụ</div>
+                    </div>
                 </div>
             </div>
         `,
@@ -806,10 +803,14 @@ Quy luật vật lí bất biến: Tần số càng cao thì bước sóng càng
                     <div style="font-size:2.2rem; margin-bottom:8px;">📻</div>
                     <h3 style="color:var(--amber);">KÊNH VOV1</h3>
                     <p style="font-size:0.85rem; color:#AAB7C8; margin-top:4px;">Thời sự & Chính trị Quốc gia</p>
-                    <div class="badge badge-amber" style="margin:12px auto; display:inline-block;">Sóng AM & FM kết hợp</div>
-                    <p style="font-size:0.88rem; color:#E2E8F0; text-align:left; line-height:1.6;">
+                    <div class="badge badge-amber" style="margin:10px auto; display:inline-block;">Sóng AM & FM kết hợp</div>
+                    <p style="font-size:0.84rem; color:#E2E8F0; text-align:left; line-height:1.5;">
                         Phát sóng trên các tần số AM (như $675\\text{ kHz}$) để phủ sóng toàn quốc, tới bà con vùng núi, ngư dân ngoài khơi xa Trường Sa, Hoàng Sa.
                     </p>
+                    <div class="slide-img-card" style="margin-top:8px;">
+                        <img src="assets/radio_tower_vov.jpg" alt="Tháp phát sóng phát thanh VOV" style="max-height:75px; object-fit:cover;">
+                        <div class="slide-img-caption">🗼 Cột anten phát sóng AM công suất lớn phủ sóng toàn quốc</div>
+                    </div>
                 </div>
                 <div class="card card-modern" style="text-align:center;">
                     <div style="font-size:2.2rem; margin-bottom:8px;">🎵</div>
@@ -922,11 +923,18 @@ Do đó, mọi thiết bị phát sóng vô tuyến đều phải tuân thủ ng
                     </div>
                 </div>
                 <div class="grid-2col" style="gap:16px;">
-                    <div class="card" style="font-size:0.9rem; line-height:1.6;">
+                    <div class="card" style="font-size:0.88rem; line-height:1.5;">
                         <strong style="color:var(--amber);">Bài 4 dạy chúng ta:</strong> Sóng điện từ truyền tin đi xa như thế nào thông qua kĩ thuật điều chế sóng mang cao tần (AM và FM).
+                        <div class="slide-img-card" style="margin-top:8px;">
+                            <img src="assets/fiber_optic.jpg" alt="Mạng cáp quang viễn thông số" style="max-height:80px; object-fit:cover;">
+                            <div class="slide-img-caption">💡 Cáp quang mang hàng tỉ xung laser ánh sáng truyền dữ liệu số khắp địa cầu</div>
+                        </div>
                     </div>
-                    <div class="card" style="font-size:0.9rem; line-height:1.6;">
+                    <div class="card" style="font-size:0.88rem; line-height:1.5;">
                         <strong style="color:var(--cyan);">Bài 5 hoàn thiện bức tranh:</strong> Bản chất của tín hiệu số và tương tự, cách bộ ADC/DAC kết hợp cùng mạch biến điệu để tạo nên điện thoại 4G/5G và Internet không dây ngày nay.
+                        <div class="alert-box" style="margin-top:10px; font-size:0.82rem; padding:8px 12px;">
+                            🌐 <strong>Hệ thống viễn thông số hiện đại:</strong> Tín hiệu tương tự $\\to$ Số hóa (ADC) $\\to$ Xử lý & Nén $\\to$ Biến điệu sóng vô tuyến $\\to$ Bức xạ truyền xa.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -938,10 +946,128 @@ Hiểu được cả hai bài, chúng ta đã nắm trọn vẹn nền tảng c�
     },
 
     // =========================================================================
-    // SLIDE 22: TỔNG KẾT BÀI HỌC
+    // SLIDE 22: CÂU HỎI CỦNG CỐ BÀI 4 (PHẦN 1 - CÂU 1, 2, 3)
     // =========================================================================
     {
         num: 22,
+        tag: "CỦNG CỐ KIẾN THỨC • CÂU HỎI TRẮC NGHIỆM",
+        title: "Câu Hỏi Ôn Tập Củng Cố Bài 4 (Phần 1)",
+        subtitle: "Thử thách trắc nghiệm tương tác: Sóng mang, Biến điệu AM & Băng thông",
+        content_html: `
+            <div class="quiz-container">
+                <!-- Câu 1 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-amber">CÂU 1</span>
+                        <span>Vì sao sóng âm tần ($20\\text{ Hz} - 20\\text{ kHz}$) không thể tự bức xạ trực tiếp thành sóng vô tuyến truyền đi xa?</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q1-exp')">A. Vì vận tốc sóng âm trong không khí quá chậm ($340\\text{ m/s}$)</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai4-q1-exp')">B. Vì bước sóng $\\lambda$ quá lớn, đòi hỏi anten khổng lồ ($L \\ge 75\\text{ km}$) và năng lượng bức xạ $W \\propto f^4$ suy giảm cực nhanh</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q1-exp')">C. Vì sóng âm bị tầng điện ly hấp thụ hoàn toàn ngay khi rời mặt đất</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q1-exp')">D. Vì tai người không nghe được sóng âm khi truyền trong không gian</button>
+                    </div>
+                    <div id="bai4-q1-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Kích thước anten tối thiểu $L \\ge \\frac{\\lambda}{4} = \\frac{c}{4f}$. Với $f = 1000\\text{ Hz}$, bước sóng $\\lambda = 300\\text{ km} \\to$ anten cần dài $75\\text{ km}$ (bất khả thi). Do đó bắt buộc phải dùng sóng mang cao tần (MHz).
+                    </div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-amber">CÂU 2</span>
+                        <span>Trong kĩ thuật biến điệu biên độ (AM), thông số nào của sóng mang cao tần bị biến đổi theo tín hiệu âm tần?</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q2-exp')">A. Tần số của sóng mang ($f_c$)</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai4-q2-exp')">B. Biên độ đỉnh của sóng mang ($A_c$)</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q2-exp')">C. Pha ban đầu của sóng mang ($\\varphi_c$)</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q2-exp')">D. Cả tần số và bước sóng của sóng mang</button>
+                    </div>
+                    <div id="bai4-q2-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Định nghĩa SGK trang 27: AM (Amplitude Modulation) giữ nguyên tần số ($f = f_c$) và pha ban đầu của sóng mang, chỉ có biên độ biến thiên nhấp nhô theo tín hiệu âm tần.
+                    </div>
+                </div>
+
+                <!-- Câu 3 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-amber">CÂU 3</span>
+                        <span>Một đài phát thanh AM phát sóng tiếng nói có tần số âm thanh cực đại $f_m = 4,5\\text{ kHz}$. Băng thông tối thiểu của kênh truyền sóng AM này là:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q3-exp')">A. $4,5\\text{ kHz}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai4-q3-exp')">B. $9,0\\text{ kHz}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q3-exp')">C. $18,0\\text{ kHz}$</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q3-exp')">D. $100,0\\text{ kHz}$</button>
+                    </div>
+                    <div id="bai4-q3-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Theo công thức SGK trang 28: Dải thông của tín hiệu AM là $B_{AM} = 2f_m$. Với $f_m = 4,5\\text{ kHz} \\to B_{AM} = 2 \\times 4,5 = 9,0\\text{ kHz}$. Đây chính là bước nhảy phân bổ kênh chuẩn $9\\text{ kHz}$ tại Việt Nam!
+                    </div>
+                </div>
+            </div>
+        `,
+        notes: `Kính mời thầy cô và các bạn cùng tham gia trả lời nhanh 3 câu hỏi củng cố:
+Câu 1 giải thích căn nguyên vật lí vì sao phải cần sóng mang: do bước sóng âm tần quá lớn, cần anten tới 75 km.
+Câu 2 nhắc lại bản chất AM: biên độ biến thiên, tần số giữ nguyên.
+Câu 3 vận dụng công thức tính băng thông AM: B = 2*f_m = 9 kHz, đúng bằng khoảng cách kênh phát thanh thực tế tại nước ta.`
+    },
+
+    // =========================================================================
+    // SLIDE 23: CÂU HỎI CỦNG CỐ BÀI 4 (PHẦN 2 - CÂU 4, 5)
+    // =========================================================================
+    {
+        num: 23,
+        tag: "CỦNG CỐ KIẾN THỨC • CÂU HỎI TRẮC NGHIỆM",
+        title: "Câu Hỏi Ôn Tập Củng Cố Bài 4 (Phần 2)",
+        subtitle: "Thử thách trắc nghiệm tương tác: Kháng nhiễu FM & Cơ chế truyền sóng tầng điện ly",
+        content_html: `
+            <div class="quiz-container">
+                <!-- Câu 4 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-blue">CÂU 4</span>
+                        <span>Vì sao đài phát thanh FM (87,5 – 108 MHz) có khả năng chống nhiễu vượt trội hơn hẳn so với đài AM khi có sấm sét hay tia lửa điện động cơ?</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai4-q4-exp')">A. Vì thông tin nằm ở tần số, máy thu FM dùng mạch xén biên độ (Limiter) gọt phẳng mọi gai nhiễu biên độ mà không làm mất âm thanh</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q4-exp')">B. Vì công suất phát sóng FM lớn hơn sóng AM hàng ngàn lần</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q4-exp')">C. Vì sóng FM phản xạ tốt hơn ở tầng điện ly nên không bị suy hao</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q4-exp')">D. Vì anten thu sóng FM luôn dài hơn anten thu sóng AM</button>
+                    </div>
+                    <div id="bai4-q4-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Hầu hết các nguồn nhiễu xung trong khí quyển (sấm sét, tia lửa bugi) đều làm méo biên độ. Vì sóng FM mang thông tin ở sự thay đổi tần số (biên độ đỉnh cố định), mạch Limiter ở đầu thu chỉ cần cắt phẳng biên độ là triệt tiêu hoàn toàn nhiễu!
+                    </div>
+                </div>
+
+                <!-- Câu 5 -->
+                <div class="quiz-card">
+                    <div class="quiz-q-title">
+                        <span class="badge badge-blue">CÂU 5</span>
+                        <span>Cơ chế vật lí chủ yếu giúp sóng phát thanh AM (sóng trung MF) truyền được đi xa hàng ngàn kilômét qua các lục địa vào ban đêm là gì?</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q5-exp')">A. Sóng đâm xuyên qua tầng điện ly rồi được vệ tinh phản xạ trở lại mặt đất</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, true, 'bai4-q5-exp')">B. Sóng phản xạ liên tiếp nhiều chặng giữa tầng điện ly (đặc biệt tầng F vào ban đêm) và bề mặt đất/nước biển</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q5-exp')">C. Sóng truyền dẫn dọc theo hệ thống lưới điện cao thế quốc gia</button>
+                        <button class="quiz-opt" onclick="checkQuiz(this, false, 'bai4-q5-exp')">D. Sóng uốn cong men theo từ trường Trái Đất đi từ cực Bắc xuống cực Nam</button>
+                    </div>
+                    <div id="bai4-q5-exp" class="quiz-exp">
+                        ✅ <strong>Chính xác!</strong> Theo Hình 4.10 SGK trang 32: Sóng trung AM phản xạ zich-zắc nhiều chặng giữa tầng điện ly và mặt đất. Ban đêm tầng D biến mất, sóng phản xạ tại tầng F cao hơn, giúp sóng truyền đi xa hàng ngàn cây số!
+                    </div>
+                </div>
+            </div>
+        `,
+        notes: `Hai câu hỏi chuyên sâu cuối cùng của Bài 4:
+Câu 4 làm sáng tỏ cơ chế mạch xén biên độ Limiter – vũ khí bí mật giúp đài FM kháng nhiễu sấm sét tuyệt đối.
+Câu 5 giải thích hiện tượng truyền sóng nhảy cóc (skywave) nhờ phản xạ tầng điện ly vào ban đêm, giúp sóng AM phủ sóng toàn cầu.`
+    },
+
+    // =========================================================================
+    // SLIDE 24: TỔNG KẾT BÀI HỌC
+    // =========================================================================
+    {
+        num: 24,
         tag: "PHẦN KẾT LUẬN • TỔNG KẾT BÀI HỌC",
         title: "Tóm Tắt Khắc Sâu Kiến Thức Bài 4",
         subtitle: "Những bài học cốt lõi cần ghi nhớ",
@@ -963,7 +1089,7 @@ Hiểu được cả hai bài, chúng ta đã nắm trọn vẹn nền tảng c�
                     </p>
                     <div style="margin-top:16px; display:flex; justify-content:center; gap:12px;">
                         <button class="btn btn-primary" onclick="goToSlide(0)">↺ Xem lại từ Slide 1</button>
-                        <button class="btn" onclick="toggleOverview()">⊞ Danh mục 22 Slide</button>
+                        <button class="btn" onclick="toggleOverview()">⊞ Danh mục 24 Slide</button>
                     </div>
                 </div>
             </div>
