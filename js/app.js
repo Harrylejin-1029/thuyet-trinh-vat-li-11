@@ -1,10 +1,12 @@
 /**
- * Main Presentation Controller & Simulation Lifecycle Manager
- * Vật lí 11 – Chuyên đề II – Bài 5: Tín hiệu tương tự và Tín hiệu số
+ * Main Presentation Controller & Multi-Lesson Lifecycle Manager
+ * Vật lí 11 – Chuyên đề II: Truyền thông tin bằng sóng vô tuyến
+ * Hỗ trợ Bài 4 (Biến điệu AM/FM) & Bài 5 (Tín hiệu tương tự & số)
  */
 
 (function () {
-    const slides = window.SLIDES_DATA || [];
+    let currentLesson = 'bai4'; // Mặc định mở Bài 4 theo yêu cầu
+    let slides = [];
     let currentIndex = 0;
     let notesVisible = false;
     let overviewOpen = false;
@@ -15,8 +17,17 @@
     const adc3dState = { samples: 16, bits: 3 };
     const pcm2dState = { samples: 14, bits: 3 };
 
-    // Map slide number -> { type: '3d'|'2d', id: string, init: Function }
-    const SLIDE_SIM_MAP = {
+    // =========================================================================
+    // SIMULATION MAPPINGS FOR LESSON 4 AND LESSON 5
+    // =========================================================================
+    const SIM_MAP_BAI4 = {
+        1:  { type: '3d-bai4', id: 'sim3d-ionosphere-hero', init: () => window.Sim3DBai4Manager?.initHero3D('sim3d-ionosphere-hero') },
+        5:  { type: '2d-bai4', id: 'sim2d-am-wave',         init: () => window.Sim2DBai4Manager?.initAMWave('sim2d-am-wave') },
+        10: { type: '2d-bai4', id: 'sim2d-fm-wave',         init: () => window.Sim2DBai4Manager?.initFMWave('sim2d-fm-wave') },
+        15: { type: '2d-bai4', id: 'sim2d-noise-lab',       init: () => window.Sim2DBai4Manager?.initNoiseLab('sim2d-noise-lab') }
+    };
+
+    const SIM_MAP_BAI5 = {
         1:  { type: '3d', id: 'sim3d-hero',       init: () => window.Sim3DManager?.initHero3D('sim3d-hero') },
         3:  { type: '2d', id: 'sim2d-analog',     init: () => window.Sim2DManager?.initAnalog2D('sim2d-analog') },
         5:  { type: '3d', id: 'sim3d-phasor',     init: () => window.Sim3DManager?.initPhasor3D('sim3d-phasor') },
@@ -32,17 +43,44 @@
         return String(n).padStart(2, '0');
     }
 
+    function getActiveSimMap() {
+        return currentLesson === 'bai4' ? SIM_MAP_BAI4 : SIM_MAP_BAI5;
+    }
+
+    function pauseAllSimulations() {
+        if (window.Sim3DBai4Manager) window.Sim3DBai4Manager.pauseAll();
+        if (window.Sim2DBai4Manager) window.Sim2DBai4Manager.pauseAll();
+        if (window.Sim3DManager) window.Sim3DManager.pauseAll();
+        if (window.Sim2DManager) window.Sim2DManager.pauseAll();
+    }
+
+    function loadLessonData(lessonKey) {
+        currentLesson = lessonKey;
+        if (lessonKey === 'bai4') {
+            slides = window.SLIDES_DATA_BAI4 || [];
+        } else {
+            slides = window.SLIDES_DATA || [];
+        }
+    }
+
     function renderDeck() {
         const deck = document.getElementById('deck');
         if (!deck) return;
 
+        // Lưu giữ thanh progress-track
+        const progressTrack = deck.querySelector('.progress-track');
+        deck.innerHTML = '';
+        if (progressTrack) deck.appendChild(progressTrack);
+
         slides.forEach((s, idx) => {
             const section = document.createElement('section');
-            section.className = 'slide' + (idx === 0 ? ' active' : '');
+            section.className = 'slide' + (idx === currentIndex ? ' active' : '');
             section.dataset.index = idx;
 
             const titleStyle = s.isCover
-                ? 'font-size: clamp(1.45rem, 2.35vw, 2.05rem); background: linear-gradient(90deg, #F4F7FB, #32D5F2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'
+                ? (currentLesson === 'bai4'
+                    ? 'font-size: clamp(1.45rem, 2.35vw, 2.05rem); background: linear-gradient(90deg, #F8FAFC, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'
+                    : 'font-size: clamp(1.45rem, 2.35vw, 2.05rem); background: linear-gradient(90deg, #F4F7FB, #32D5F2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;')
                 : '';
 
             const subtitleHtml = s.subtitle
@@ -68,25 +106,37 @@
 
     function renderOverview() {
         const grid = document.getElementById('overview-grid');
-        if (!grid) return;
+        const titleEl = document.getElementById('overview-modal-title');
+        if (titleEl) {
+            titleEl.textContent = currentLesson === 'bai4'
+                ? 'MỤC LỤC 22 SLIDE — BÀI 4: BIẾN ĐIỆU (AM & FM)'
+                : 'MỤC LỤC 24 SLIDE — BÀI 5: TÍN HIỆU TƯƠNG TỰ VÀ TÍN HIỆU SỐ';
+            titleEl.style.color = currentLesson === 'bai4' ? 'var(--amber)' : 'var(--cyan)';
+        }
 
+        if (!grid) return;
         grid.innerHTML = slides.map((s, idx) => `
             <div class="overview-item ${idx === currentIndex ? 'current' : ''}" data-idx="${idx}" onclick="goToSlide(${idx}); toggleOverview(false);">
                 <div class="ov-num">SLIDE ${pad2(s.num)}</div>
                 <div class="ov-title">${s.title}</div>
-                ${s.simBadge ? `<span class="ov-badge">⚡ ${s.simBadge}</span>` : ''}
+                ${s.simBadge ? `<span class="ov-badge" style="background:${currentLesson === 'bai4' ? 'rgba(245,158,11,0.2)' : 'rgba(50,213,242,0.2)'}; color:${currentLesson === 'bai4' ? '#FFB703' : 'var(--cyan)'};">⚡ ${s.simBadge}</span>` : ''}
             </div>
         `).join('');
     }
 
     function activateSlideSim(slideNum) {
-        if (window.Sim3DManager) window.Sim3DManager.pauseAll();
-        if (window.Sim2DManager) window.Sim2DManager.pauseAll();
+        pauseAllSimulations();
 
-        const cfg = SLIDE_SIM_MAP[slideNum];
+        const activeMap = getActiveSimMap();
+        const cfg = activeMap[slideNum];
         if (!cfg) return;
 
-        const mgr = cfg.type === '3d' ? window.Sim3DManager : window.Sim2DManager;
+        let mgr = null;
+        if (cfg.type === '3d-bai4') mgr = window.Sim3DBai4Manager;
+        else if (cfg.type === '2d-bai4') mgr = window.Sim2DBai4Manager;
+        else if (cfg.type === '3d') mgr = window.Sim3DManager;
+        else if (cfg.type === '2d') mgr = window.Sim2DManager;
+
         if (!mgr) return;
 
         if (!initializedSims.has(cfg.id)) {
@@ -99,9 +149,12 @@
         }
 
         const ctrl = mgr.get(cfg.id);
-        if (ctrl && typeof ctrl.start === 'function') {
+        if (ctrl && typeof ctrl.resume === 'function') {
+            ctrl.resume();
+        } else if (ctrl && typeof ctrl.start === 'function') {
             ctrl.start();
         }
+
         requestAnimationFrame(() => {
             window.dispatchEvent(new Event('resize'));
         });
@@ -118,7 +171,12 @@
         const pct = ((currentIndex + 1) / total) * 100;
 
         const progressEl = document.getElementById('progress-fill');
-        if (progressEl) progressEl.style.width = `${pct}%`;
+        if (progressEl) {
+            progressEl.style.width = `${pct}%`;
+            progressEl.style.background = currentLesson === 'bai4'
+                ? 'linear-gradient(90deg, #F59E0B, #FFB703)'
+                : 'linear-gradient(90deg, #32D5F2, #397BFA)';
+        }
 
         const counterEl = document.getElementById('slide-counter');
         if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${total}`;
@@ -135,6 +193,45 @@
 
         activateSlideSim(s.num);
     }
+
+    window.switchLesson = function (lessonKey) {
+        if (currentLesson === lessonKey && slides.length > 0) return;
+
+        pauseAllSimulations();
+        loadLessonData(lessonKey);
+        currentIndex = 0;
+
+        // Cập nhật giao diện tab
+        const tabBai4 = document.getElementById('tab-bai4');
+        const tabBai5 = document.getElementById('tab-bai5');
+        const dlLink = document.getElementById('link-pptx-download');
+
+        if (tabBai4) tabBai4.classList.toggle('active', lessonKey === 'bai4');
+        if (tabBai5) tabBai5.classList.toggle('active', lessonKey === 'bai5');
+
+        if (dlLink) {
+            if (lessonKey === 'bai4') {
+                dlLink.href = 'Bai4_BienDieu_VatLi11.pptx';
+                dlLink.innerHTML = '📥 Tải PPTX Bài 4';
+                dlLink.style.borderColor = '#F59E0B';
+                dlLink.style.color = '#FFB703';
+            } else {
+                dlLink.href = 'Bai5_TinHieuTuongTu_Va_TinHieuSo_VatLi11.pptx';
+                dlLink.innerHTML = '📥 Tải PPTX Bài 5';
+                dlLink.style.borderColor = 'var(--cyan)';
+                dlLink.style.color = 'var(--cyan)';
+            }
+        }
+
+        renderDeck();
+        renderOverview();
+        updateUI();
+
+        const toastMsg = lessonKey === 'bai4'
+            ? '📻 Đã chuyển sang Bài 4: Biến điệu (AM & FM) — 22 Slide'
+            : '🔢 Đã chuyển sang Bài 5: Tín hiệu tương tự & số — 24 Slide';
+        if (window.showToast) window.showToast(toastMsg);
+    };
 
     window.goToSlide = function (index) {
         if (!slides.length) return;
@@ -199,41 +296,31 @@
         window.dispatchEvent(new Event('resize'));
     }
 
-    window.zoomIn = function () {
-        applyZoom(currentZoom + 0.1);
-    };
-
-    window.zoomOut = function () {
-        applyZoom(currentZoom - 0.1);
-    };
-
-    window.resetZoom = function () {
-        applyZoom(1.0);
-    };
+    window.zoomIn = function () { applyZoom(currentZoom + 0.1); };
+    window.zoomOut = function () { applyZoom(currentZoom - 0.1); };
+    window.resetZoom = function () { applyZoom(1.0); };
 
     // Recording Aliases
-    window.startVideoRecording = function () {
-        window.PresentationRecorder?.startVideoRecording();
-    };
+    window.startVideoRecording = function () { window.PresentationRecorder?.startVideoRecording(); };
+    window.startAudioRecording = function () { window.PresentationRecorder?.startAudioRecording(); };
+    window.togglePauseRecording = function () { window.PresentationRecorder?.togglePauseRecording(); };
+    window.stopRecording = function () { window.PresentationRecorder?.stopRecording(); };
+    window.closeReviewModal = function () { window.PresentationRecorder?.closeReviewModal(); };
+    window.downloadRecordingAgain = function () { window.PresentationRecorder?.downloadAgain(); };
 
-    window.startAudioRecording = function () {
-        window.PresentationRecorder?.startAudioRecording();
-    };
-
-    window.togglePauseRecording = function () {
-        window.PresentationRecorder?.togglePauseRecording();
-    };
-
-    window.stopRecording = function () {
-        window.PresentationRecorder?.stopRecording();
-    };
-
-    window.closeReviewModal = function () {
-        window.PresentationRecorder?.closeReviewModal();
-    };
-
-    window.downloadRecordingAgain = function () {
-        window.PresentationRecorder?.downloadAgain();
+    // Toast Notification Utility
+    window.showToast = function (msg, type = 'info') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `toast ${type === 'error' ? 'toast-error' : (type === 'success' ? 'toast-success' : '')}`;
+        toast.textContent = msg;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => toast.remove(), 320);
+        }, 3000);
     };
 
     // Helper for toggling active button groups cleanly
@@ -245,10 +332,8 @@
     }
 
     // =========================================================================
-    // GLOBAL SIMULATION CALLBACKS USED BY INLINE SLIDE CONTROLS
+    // SLIDE CONTROLS CALLBACKS FOR BAI 5
     // =========================================================================
-
-    // Slide 3: Analog 2D Explorer
     window.setAnalogMode = function (mode) {
         const map = { periodic: 'btn-analog-per', nonperiodic: 'btn-analog-non', draw: 'btn-analog-draw' };
         setActiveBtn(Object.values(map), map[mode]);
@@ -261,7 +346,6 @@
         window.Sim2DManager?.get('sim2d-analog')?.setParams(f, a);
     };
 
-    // Slide 5: Phasor 3D Simulation
     window.updatePhasor3D = function () {
         const f = parseFloat(document.getElementById('phasor-freq')?.value || '50');
         const a = parseFloat(document.getElementById('phasor-amp')?.value || '1.0');
@@ -271,7 +355,6 @@
         window.Sim3DManager?.get('sim3d-phasor')?.setParams(f, a);
     };
 
-    // Slide 10: Multi-level 2D Simulation
     window.setMultiLevel = function (levels) {
         const map = { 2: 'btn-lvl-2', 4: 'btn-lvl-4', 8: 'btn-lvl-8' };
         setActiveBtn(Object.values(map), map[levels]);
@@ -294,7 +377,6 @@
         window.Sim2DManager?.get('sim2d-multilevel')?.setBits(bits);
     };
 
-    // Slide 15: Noise Battle 2D Lab
     window.updateNoiseBattle = function () {
         const noise = parseFloat(document.getElementById('noise-lvl')?.value || '0.25');
         const gen = parseInt(document.getElementById('gen-lvl')?.value || '1', 10);
@@ -305,7 +387,6 @@
         window.Sim2DManager?.get('sim2d-noise')?.setParams(noise, gen);
     };
 
-    // Slide 18: ADC 3D Quantization Chamber
     window.updateADC3D = function () {
         const samples = parseInt(document.getElementById('adc3d-samples')?.value || '16', 10);
         adc3dState.samples = samples;
@@ -321,7 +402,6 @@
         window.Sim3DManager?.get('sim3d-adc')?.setParams(adc3dState.samples, adc3dState.bits);
     };
 
-    // Slide 19: DAC / PCM 2D Reconstruction
     function syncPCMReadout() {
         const el = document.getElementById('pcm-readout');
         if (el) {
@@ -344,22 +424,15 @@
         window.Sim2DManager?.get('sim2d-pcm')?.setParams(pcm2dState.samples, pcm2dState.bits);
     };
 
-    // Slide 20: Audio Studio 2D
     window.setAudioMode = function (mode) {
-        const map = {
-            clean: 'btn-aud-clean',
-            noisy: 'btn-aud-noisy',
-            filtered: 'btn-aud-filtered',
-            lowbit: 'btn-aud-lowbit'
-        };
+        const map = { clean: 'btn-aud-clean', noisy: 'btn-aud-noisy', filtered: 'btn-aud-filtered', lowbit: 'btn-aud-lowbit' };
         setActiveBtn(Object.values(map), map[mode]);
         window.Sim2DManager?.get('sim2d-audio')?.setMode(mode);
     };
 
     // =========================================================================
-    // KEYBOARD & MOUSE EVENT LISTENERS
+    // KEYBOARD EVENT LISTENERS
     // =========================================================================
-
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && overviewOpen) {
             toggleOverview(false);
@@ -440,8 +513,9 @@
         setTimeout(() => window.dispatchEvent(new Event('resize')), 120);
     });
 
-    // Boot presentation
+    // Khởi động bài thuyết trình
     document.addEventListener('DOMContentLoaded', () => {
+        loadLessonData('bai4');
         applyZoom(currentZoom);
         renderDeck();
         renderOverview();

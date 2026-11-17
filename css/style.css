@@ -906,3 +906,146 @@ body.laser-active .laser-dot {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* =========================================================================
+   LESSON SWITCHER & TELECOM VINTAGE THEME ADDITIONS (BAI 4 & PORTAL)
+   ========================================================================= */
+.top-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(14, 25, 48, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(50, 213, 242, 0.25);
+    border-radius: 10px;
+    padding: 6px 14px;
+    margin-bottom: 2px;
+}
+.portal-badge {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    text-transform: uppercase;
+}
+.lesson-switcher {
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4px;
+    border-radius: 8px;
+}
+.lesson-tab {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #94A3B8;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.lesson-tab:hover {
+    color: #FFF;
+    background: rgba(255, 255, 255, 0.06);
+}
+.lesson-tab.active {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.1));
+    border-color: #F59E0B;
+    color: #FFB703;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+}
+.lesson-tab.tab-blue.active {
+    background: linear-gradient(135deg, rgba(50, 213, 242, 0.25), rgba(57, 123, 250, 0.15));
+    border-color: var(--cyan);
+    color: var(--white);
+    box-shadow: 0 0 12px rgba(50, 213, 242, 0.3);
+}
+.btn-download-pptx {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid #F59E0B;
+    color: #FFB703;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-download-pptx:hover {
+    background: #F59E0B;
+    color: #000;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+/* Card & Badge Themes */
+.card-vintage {
+    border-color: rgba(245, 158, 11, 0.35) !important;
+    background: linear-gradient(145deg, rgba(20, 28, 44, 0.95), rgba(30, 25, 18, 0.75)) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.08) !important;
+}
+.card-modern {
+    border-color: rgba(0, 229, 255, 0.35) !important;
+    background: linear-gradient(145deg, rgba(16, 28, 53, 0.95), rgba(10, 20, 40, 0.85)) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.08) !important;
+}
+.badge-amber {
+    background: rgba(245, 158, 11, 0.2);
+    color: #FFB703;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+.badge-blue {
+    background: rgba(0, 229, 255, 0.18);
+    color: #00E5FF;
+    border: 1px solid rgba(0, 229, 255, 0.45);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+.badge-purple {
+    background: rgba(168, 85, 247, 0.2);
+    color: #C084FC;
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.flow-pill {
+    flex: 1;
+    min-width: 120px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1.5px solid #334155;
+    border-radius: 10px;
+    padding: 10px 8px;
+    transition: all 0.2s ease;
+}
+.flow-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+.math-banner {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    text-align: center;
+    color: #FFF;
+    font-family: 'Cambria Math', 'Latin Modern Math', Georgia, serif;
+}

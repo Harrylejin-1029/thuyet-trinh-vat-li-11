@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bài 5: Tín hiệu tương tự và Tín hiệu số — Vật lí 11 (Thuyết trình Tương tác 3D/2D)</title>
+    <title>Chuyên đề II: Truyền thông tin bằng sóng vô tuyến — Bài 4 & Bài 5 (Vật lí 11)</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <div class="stage-wrapper">
+        <!-- Top Navigation Bar / Lesson Switcher Portal -->
+        <div class="top-nav-bar">
+            <div class="portal-badge">📡 CHUYÊN ĐỀ II • TRUYỀN THÔNG TIN BẰNG SÓNG VÔ TUYẾN</div>
+            <div class="lesson-switcher">
+                <button class="lesson-tab active" id="tab-bai4" onclick="switchLesson('bai4')" title="Bài 4: Biến điệu (AM & FM)">
+                    📻 BÀI 4: BIẾN ĐIỆU (AM & FM)
+                </button>
+                <button class="lesson-tab tab-blue" id="tab-bai5" onclick="switchLesson('bai5')" title="Bài 5: Tín hiệu tương tự và Tín hiệu số">
+                    🔢 BÀI 5: TÍN HIỆU TƯƠNG TỰ & SỐ
+                </button>
+            </div>
+            <a href="Bai4_BienDieu_VatLi11.pptx" id="link-pptx-download" download class="btn-download-pptx" title="Tải file PowerPoint (.pptx) chiếu offline">
+                📥 Tải PPTX Bài 4
+            </a>
+        </div>
+
         <!-- Main 16:9 Presentation Stage -->
         <div class="deck-container" id="deck">
             <div class="progress-track">
-                <div class="progress-fill" id="progress-fill" style="width: 4.16%;"></div>
+                <div class="progress-fill" id="progress-fill" style="width: 4.54%;"></div>
             </div>
             <!-- Slides dynamically injected by js/app.js -->
         </div>
@@ -21,7 +37,7 @@
             <!-- Navigation -->
             <div class="nav-group">
                 <button class="btn" id="btn-prev" onclick="prevSlide()" title="Slide trước (←)">◀ Trước</button>
-                <span class="counter-pill" id="slide-counter">1 / 24</span>
+                <span class="counter-pill" id="slide-counter">1 / 22</span>
                 <button class="btn" id="btn-next" onclick="nextSlide()" title="Slide tiếp theo (→ / Space)">Tiếp ▶</button>
             </div>
 
@@ -40,7 +56,7 @@
 
             <!-- Presentation Tools -->
             <div class="nav-group">
-                <button class="btn" id="btn-overview" onclick="toggleOverview()" title="Xem toàn bộ 24 slide (G)">⊞ Mục lục (G)</button>
+                <button class="btn" id="btn-overview" onclick="toggleOverview()" title="Xem toàn bộ mục lục slide (G)">⊞ Mục lục (G)</button>
                 <button class="btn" id="btn-notes" onclick="toggleNotes()" title="Bật/Tắt lời thuyết trình (S)">📝 Lời nói (S)</button>
                 <button class="btn" id="btn-laser" onclick="toggleLaser()" title="Con trỏ Laser (L)">🔴 Laser (L)</button>
                 <button class="btn" id="btn-fullscreen" onclick="toggleFullscreen()" title="Toàn màn hình (F)">⛶ Toàn màn hình (F)</button>
@@ -51,7 +67,7 @@
         <div class="notes-drawer" id="notes-drawer" style="display: none;">
             <div class="notes-header">
                 <span>🎙️ LỜI THUYẾT TRÌNH CHI TIẾT (SPEAKER NOTES)</span>
-                <span id="notes-slide-label">Slide 1 / 24</span>
+                <span id="notes-slide-label">Slide 1 / 22</span>
             </div>
             <div id="notes-content" style="white-space: pre-line;"></div>
         </div>
@@ -85,10 +101,10 @@
     <!-- Toast Notifications Container -->
     <div class="toast-container" id="toast-container"></div>
 
-    <!-- 24-Slide Overview Modal -->
+    <!-- Multi-Slide Overview Modal -->
     <div class="overview-modal" id="overview-modal">
         <div class="overview-header">
-            <h2 style="color: var(--cyan); font-size: 1.25rem;">MỤC LỤC 24 SLIDE — BÀI 5: TÍN HIỆU TƯƠNG TỰ VÀ TÍN HIỆU SỐ</h2>
+            <h2 id="overview-modal-title" style="color: var(--amber); font-size: 1.25rem;">MỤC LỤC 22 SLIDE — BÀI 4: BIẾN ĐIỆU (AM & FM)</h2>
             <button class="btn" onclick="toggleOverview()">✕ Đóng (Esc)</button>
         </div>
         <div class="overview-grid" id="overview-grid"></div>
@@ -97,12 +113,23 @@
     <!-- Laser Pointer Dot -->
     <div class="laser-dot" id="laser-dot"></div>
 
-    <!-- Offline Libraries & Simulation Engines -->
+    <!-- Three.js Libraries (Offline + Fast CDN Fallback) -->
     <script src="libs/three.min.js"></script>
+    <script>window.THREE || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\\/script>')</script>
     <script src="libs/OrbitControls.js"></script>
+    <script>window.THREE && window.THREE.OrbitControls || document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"><\\/script>')</script>
+
+    <!-- Bài 5 Simulations & Data -->
     <script src="js/sims-3d.js"></script>
     <script src="js/sims-2d.js"></script>
     <script src="js/slides-data.js"></script>
+
+    <!-- Bài 4 Simulations & Data -->
+    <script src="js/sims-bai4-3d.js"></script>
+    <script src="js/sims-bai4-2d.js"></script>
+    <script src="js/slides-bai4.js"></script>
+
+    <!-- Core Presenter & Recording Engines -->
     <script src="js/recorder.js"></script>
     <script src="js/app.js"></script>
 </body>
