@@ -102,6 +102,26 @@
             `;
             deck.appendChild(section);
         });
+
+        renderMath();
+    }
+
+    function renderMath() {
+        const deck = document.getElementById('deck');
+        if (!deck || typeof window.renderMathInElement !== 'function') return;
+        try {
+            window.renderMathInElement(deck, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true }
+                ],
+                throwOnError: false
+            });
+        } catch (e) {
+            console.warn('KaTeX render warning:', e);
+        }
     }
 
     function renderOverview() {
@@ -520,5 +540,10 @@
         renderDeck();
         renderOverview();
         updateUI();
+        renderMath();
+    });
+
+    window.addEventListener('load', () => {
+        renderMath();
     });
 })();

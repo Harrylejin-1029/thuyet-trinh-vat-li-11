@@ -1049,3 +1049,35 @@ body.laser-active .laser-dot {
     color: #FFF;
     font-family: 'Cambria Math', 'Latin Modern Math', Georgia, serif;
 }
+
+
+/* =========================================================================
+   KATEX MATH TYPOGRAPHY & DARK THEME ENHANCEMENT
+   ========================================================================= */
+.katex {
+    font-size: 1.08em !important;
+    text-rendering: geometricPrecision;
+}
+.katex-display {
+    margin: 0.4em 0 !important;
+}
+.math-banner {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(245, 158, 11, 0.35) !important;
+    border-radius: 8px !important;
+    padding: 10px 16px !important;
+    margin: 10px 0 !important;
+    text-align: center !important;
+    color: #F8FAFC !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+.math-banner .katex {
+    color: #FFB703 !important;
+    font-size: 1.22em !important;
+}
+.card-modern .math-banner {
+    border-color: rgba(0, 229, 255, 0.35) !important;
+}
+.card-modern .math-banner .katex {
+    color: #00E5FF !important;
+}
